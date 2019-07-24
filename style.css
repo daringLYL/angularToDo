@@ -1,0 +1,9 @@
+.textCenter {
+    text-align: center;
+}
+.textLeft {
+    text-align: left;
+}
+.addLine {
+    text-decoration: line-through;
+} 
