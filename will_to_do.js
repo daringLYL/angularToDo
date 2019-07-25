@@ -1,13 +1,13 @@
-var app = angular.module('exercise', ['ngStorage']);
-app.controller('doExercise', function ($scope,$localStorage,$sessionStorage) {
+const app = angular.module('exercise', ['ngStorage']);
+app.controller('doExercise', function ($scope, $localStorage) {
     $scope.getThing = '';
     $scope.search = '';
     $scope.$storage = $localStorage.$default({
-       result :[]
+        result: []
     });
     $scope.selected = false;
     $scope.show = function () {
-        $scope.$storage.result.push({'name':$scope.getThing,'date':new Date().toLocaleDateString()});
+        $scope.$storage.result.push({ 'name': $scope.getThing, 'date': new Date().toLocaleDateString() });
         $scope.getThing = '';
     }
     $scope.done = function (index) {
@@ -19,16 +19,14 @@ app.controller('doExercise', function ($scope,$localStorage,$sessionStorage) {
             $scope.show();
         }
     }
-    $scope.dele = function(item){
-        if(confirm('是否确认'+item+'删除？')){
+    $scope.delete = function (item) {
+        if (confirm('是否确认' + item + '删除？')) {
             for (index in $scope.$storage.result) {
-                if(item === $scope.$storage.result[index].name){
-                    $scope.$storage.result.splice(index,1);
-                }
+                $scope.$storage.result.splice(index, 1);
             }
         }
     };
 
-    
-           })
+
+})
 
