@@ -20,7 +20,7 @@
         <input type="button" value="添加" ng-click="show()" class="am-btn am-btn-secondary am-btn-xs" />
         <input type="text" id="get" ng-model="search" ng-keyup="enterEvent($event)" />
         <div ng-click="selected = !selected" ng-class="{'addLine':selected}" ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
-            <button ng-click="dele(item.name)">删除</button>
+            <button ng-click="delete(item.index)">删除</button>
         </div>
     </div>
 </body>
