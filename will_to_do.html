@@ -8,6 +8,7 @@
     <link rel="stylesheet" herf="http://cdn.clouddeep.cn/amazeui/1.0.1/css/amazeui.basic.min.css">
     <link rel="stylesheet" href="http://cdn.clouddeep.cn/amazeui/1.0.1/css/amazeui.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1316698_hnmp6etxk7.css">
     <script type="text/javascript" src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/ngStorage/0.3.11/ngStorage.min.js"></script>
     <script src="will_to_do.js"></script>
@@ -19,8 +20,8 @@
         <input type="text" id="get" ng-model="getThing" ng-keyup="enterEvent($event)" />
         <input type="button" value="添加" ng-click="show()" class="am-btn am-btn-secondary am-btn-xs" />
         <input type="text" id="get" ng-model="search" ng-keyup="enterEvent($event)" />
-        <div ng-click="selected = !selected" ng-class="{'addLine':selected}" ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
-            <button ng-click="delete(item.index)">删除</button>
+        <div ng-click="selected = !selected" ng-class="{'addLine':selected}"ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
+            <i class="iconfont icon-close" ng-click="delete(item)"></i>
         </div>
     </div>
 </body>
