@@ -23,6 +23,11 @@
         <div ng-click="selected = !selected" ng-class="{'addLine':selected}"ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
             <i class="iconfont icon-close" ng-click="delete(item)"></i>
         </div>
+        <input type="button" value="恢复"  ng-click="showRecover()"/>
+        <div ng-hide="show" ng-repeat="item in $storage.recover">{{item.name}}   {{item.date}}
+            <button ng-click="deleteRecover(item)">删除</button>
+        </div>
+
     </div>
 </body>
 
