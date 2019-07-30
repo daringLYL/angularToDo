@@ -1,13 +1,13 @@
-const app = angular.module("exercise", ['ngStorage']);
-app.controller("doExercise", function ($scope, $localStorage) {
-    $scope.getThing = "";
-    $scope.search = "";
+const app = angular.module('exercise', ['ngStorage']);
+app.controller('doExercise', function ($scope, $localStorage) {
+    $scope.getThing = '';
+    $scope.search = '';
     $scope.recover = [];
     $scope.$storage = $localStorage.$default({
-        result: []
+        result: [], recover: []
     });
     $scope.selected = false;
-    $scope.show = function () {
+    $scope.add = function () {
         $scope.$storage.result.push({ 'name': $scope.getThing, 'date': new Date().toLocaleDateString() });
         $scope.getThing = '';
     }
@@ -17,29 +17,26 @@ app.controller("doExercise", function ($scope, $localStorage) {
     $scope.enterEvent = function (e) {
         const keycode = window.event ? e.keyCode : e.which;
         if (keycode === 13) {
-            $scope.show();
+            $scope.add();
         }
     }
-    $scope.$storage = $localStorage.$default({
-        recover: []
-    });
-    $scope.delete = function (item, index) {
-        if(confirm(`是否确认${item}删除`)){
-        if (item == $scope.$storage.result[index]) {
-            $scope.$storage.recover.push(item);
-            $scope.$storage.result.splice(index, 1);
-        }
-    }};
-    $scope.deleteRecover = function (item, index) {
-        if(confirm(`是否确认${item}删除`)){
-        if (item == $scope.$storage.recover[index]) {
-            $scope.$storage.recover.splice(index, 1);
+    $scope.delete = function (remove, item, index) {
+        if (confirm(`是否确认${item}删除`)) {
+            if (remove === 1) {
+                if (item == $scope.$storage.result[index]) {
+                    $scope.$storage.recover.push(item);
+                    $scope.$storage.result.splice(index, 1);
+                }
+            }
+            if (remove === 0) {
+                console.log(33)
+                $scope.$storage.recover.splice(index, 1);
+            }
         }
     }
-    };
     $scope.onShow = true;
-    $scope.showRecover = function () {
-        $scope.onShow = !$scope.onShow;
-    }
+$scope.showRecover = function () {
+    $scope.onShow = !$scope.onShow;
+}
 })
 
