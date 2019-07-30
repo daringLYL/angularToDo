@@ -29,7 +29,6 @@ app.controller('doExercise', function ($scope, $localStorage) {
                 }
             }
             if (remove === 0) {
-                console.log(33)
                 $scope.$storage.recover.splice(index, 1);
             }
         }
