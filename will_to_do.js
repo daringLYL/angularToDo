@@ -23,10 +23,8 @@ app.controller('doExercise', function ($scope, $localStorage) {
     $scope.delete = function (remove, item, index) {
         if (confirm(`是否确认${item}删除`)) {
             if (remove === 1) {
-                if (item == $scope.$storage.result[index]) {
-                    $scope.$storage.recover.push(item);
-                    $scope.$storage.result.splice(index, 1);
-                }
+                $scope.$storage.recover.push(item);
+                $scope.$storage.result.splice(index, 1);
             }
             if (remove === 0) {
                 $scope.$storage.recover.splice(index, 1);
@@ -34,8 +32,8 @@ app.controller('doExercise', function ($scope, $localStorage) {
         }
     }
     $scope.onShow = true;
-$scope.showRecover = function () {
-    $scope.onShow = !$scope.onShow;
-}
+    $scope.showRecover = function () {
+        $scope.onShow = !$scope.onShow;
+    }
 })
 
