@@ -18,11 +18,16 @@
 <body ng-controller="doExercise">
     <div class="textCenter">
         <input type="text" id="get" ng-model="getThing" ng-keyup="enterEvent($event)" />
-        <input type="button" value="添加" ng-click="show()" class="am-btn am-btn-secondary am-btn-xs" />
+        <input type="button" value="添加" ng-click="add()" class="am-btn am-btn-secondary am-btn-xs" />
         <input type="text" id="get" ng-model="search" ng-keyup="enterEvent($event)" />
-        <div ng-click="selected = !selected" ng-class="{'addLine':selected}"ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
-            <i class="iconfont icon-close" ng-click="delete(item)"></i>
+        <div ng-hide="!onShow" ng-click="selected = !selected" ng-class="{'addLine':selected}"ng-repeat="item in $storage.result|filter:search | orderBy:'date'">{{item.name}} {{item.date}}
+            <i class="iconfont icon-close" ng-click="delete(1, item, $index)"></i>
         </div>
+        <input type="button" value="恢复与切换到添加"  ng-click="showRecover()"/>
+        <div ng-hide="onShow" ng-repeat="item in $storage.recover">{{item.name}}   {{item.date}}
+            <i class="iconfont icon-close" ng-click="delete(0, item, $index)"></i>
+        </div>
+
     </div>
 </body>
 
